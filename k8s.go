@@ -5,20 +5,26 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/pkg/api/v1"
-	"k8s.io/client-go/tools/clientcmd"
+	//"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/client-go/rest"
+	//"fmt"
 )
 
-func kubeClient(kubeconfig string) (*kubernetes.Clientset, error) {
-	// TODO: allow overriding context
-	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to create kubernetes config")
-	}
+/* from client-go examples files:
+kubernetes/kubernetes/staging/src/k8s.io/client-go/examples/in-cluster-client-configuration/main.go
+ */
 
-	clientset, err := kubernetes.NewForConfig(config)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to create kubernetws client")
-	}
+ func kubeClient() (*kubernetes.Clientset, error) {
+ 	// creates the in-cluster config
+ 	config, err := rest.InClusterConfig()
+ 	if err != nil {
+ 		panic(err.Error())
+ 	}
+ 	// creates the clientset
+ 	clientset, err := kubernetes.NewForConfig(config)
+ 	if err != nil {
+ 		panic(err.Error())
+ 	}
 	return clientset, nil
 }
 
