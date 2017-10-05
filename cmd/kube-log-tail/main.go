@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	kubelogtail "github.com/bakins/kube-log-tail"
+	kubelogtail "github.com/cmosetick/kube-log-tail"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 )

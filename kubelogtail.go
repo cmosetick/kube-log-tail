@@ -48,11 +48,13 @@ func New(options ...OptionsFunc) (*KubeLogTail, error) {
 		}
 	}
 
+/*
 	client, err := kubeClient(k.kubeconfig)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to create kubernetes client from %s", k.kubeconfig)
 	}
 	k.clientset = client
+*/
 
 	c, err := newLogColorPrint(k.colorMode)
 	if err != nil {
@@ -65,12 +67,14 @@ func New(options ...OptionsFunc) (*KubeLogTail, error) {
 
 // SetKubeConfig creates a function that will set the kubeconfig.
 // Generally, only used when create a new KubeLogTail.
+/*
 func SetKubeConfig(kubeconfig string) OptionsFunc {
 	return func(k *KubeLogTail) error {
 		k.kubeconfig = kubeconfig
 		return nil
 	}
 }
+*/
 
 // SetRefreshTime creates a function that will set the pod refresh time.
 // Generally, only used when create a new KubeLogTail.
