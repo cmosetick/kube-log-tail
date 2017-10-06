@@ -55,7 +55,7 @@ func runTail(cmd *cobra.Command, args []string) {
 	}
 
 	k, err := kubelogtail.New(
-		kubelogtail.SetKubeConfig(kubeconfig),
+		//kubelogtail.SetKubeConfig(kubeconfig),
 		kubelogtail.SetRefreshTime(refreshTime),
 		kubelogtail.SetNamespace(namespace),
 		kubelogtail.SetLabelSelector(labelSelector),
